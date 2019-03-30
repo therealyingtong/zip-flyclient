@@ -103,6 +103,6 @@ References
 
 .. [#ZIPXXX] `ZCash reference light client protocol <https://github.com/gtank/zips/blob/light_payment_detection/zip-XXX-light-payment-detection.rst>`_
 
-.. [#PeterTodd] _`Merkle Mountain Range <https://github.com/proofchains/python-proofmarshal/blob/master/proofmarshal/mmr.py>`
+.. [#PeterTodd] _`Merkle Mountain Range <https://github.com/proofchains/python-proofmarshal/blob/master/proofmarshal/mmr.py>`_
 
 .. [#difficulty] `ZCash historical block difficulty <https://www.coinwarz.com/difficulty-charts/zcash-difficulty-chart>`_
