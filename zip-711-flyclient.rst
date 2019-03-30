@@ -2,11 +2,11 @@
 
   ZIP: 711 
   Title: FlyClient ZCash SPV
-  Champions: Zooko <zooko@z.cash> (?)
+  Champions: 
   Status: Draft
   Category: Consensus
   Created: 2019-03-30
-  License: MIT (?)
+  License: MIT 
 
 
 Terminology
