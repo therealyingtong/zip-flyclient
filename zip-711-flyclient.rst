@@ -42,7 +42,7 @@ Specification
 
 Probabilistic sampling
 ```````````````````````
-Instead of downloading every block header, the FlyClient samples blocks from the full node with the given sampling distribution, where x is the relative aggregate weight and δ is the fraction of the blocks which are always checked by the client with probability 1.
+Instead of downloading every block header, the FlyClient samples blocks from the full node with the given sampling distribution. Here, x is the relative aggregate weight at the given block (e.g. if x=1/2 at some block, it means that half the chain's difficulty has been amassed in the interval up to that block), and δ is the fraction of the blocks which are always checked by the client with probability 1.
 
 .. figure:: pdf.png
     :align: center
