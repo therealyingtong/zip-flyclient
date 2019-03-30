@@ -14,17 +14,17 @@ Terminology
 The key words "MUST", "SHOULD", and "MAY" in this document are to be interpreted as
 described in RFC 2119. [#RFC2119]_
 
-**Light client**
+Light client
   A client that is not a full participant in the network of Zcash peers. It can send and
   receive payments, but does not store or validate a copy of the blockchain.
 
-**High probability**
+High probability
   An event occurs with high probability if it occurs with probability 1-O(1/2^λ), where λ is the security parameter.
 
-**Negligible probability**
+Negligible probability
   An event occurs with negligible probability if it occurs with probability O(1/2^λ), where λ is the security parameter.
 
-**Velvet fork**
+Velvet fork
   A backwards compatible protocol upgrade in which blocks by outdated nodes are not rejected. These rely on clients reinterpreting blockchain data.
  
 
@@ -46,15 +46,21 @@ Each FlyClient prover has to maintain a commitment to all its block headers in a
 
 Merkle mountain range
 ``````````````````````
-Each MMR node contains an additional field of 8 bytes to store the cumulative difficulty of the leaves below it.
+A Merkle mountain range (MMR) is an iterative Merkle tree construction where every node contains the root of the previous MMR. Besides the hash (or the hash of its child nodes), each MMR node contains an additional field of 8 bytes to store the cumulative difficulty of the nodes below it.
+
+.. figure:: MMR.png
+    :align: center
+    :figclass: align-center
+
+    Schematic of Merkle mountain range (from [#FlyClient]_).
 
 Verifier
 `````````
-Verifying a valid chain: the hash of the block B_n at the head of the chain specifies a random subset of blocks to sample. For each block, the prover provides the corresponding block header and an MMR proof that the block is located at the correct height of the chain committed by B_n. The verifier checks that the MMR root stored in each sampled block correctly commits to the correct subchain of the chain committed to in B_n. If the PoW solution or the MMR proofs of any of the sampled blocks is invalid, then the verifier rejects the proof.  Otherwise, it accepts B_n as the last block of the honest chain.
+**Verifying a valid chain**: the hash of the block B_n at the head of the chain specifies a random subset of blocks to sample. For each block, the prover provides the corresponding block header and an MMR proof that the block is located at the correct height of the chain committed by B_n. The verifier checks that the MMR root stored in each sampled block correctly commits to the correct subchain of the chain committed to in B_n. If the PoW solution or the MMR proofs of any of the sampled blocks is invalid, then the verifier rejects the proof.  Otherwise, it accepts B_n as the last block of the honest chain.
 
-Verifying a block in the valid chain: MMR 
+**Verifying a block in the valid chain**: 
 
-Verifying transaction inclusion in the block: To ensure that tx is included in some block in the honest chain, the client proceeds similar to a regular SPV client, i.e., verifies the Merkle proof provided by the prover against the root of the transaction Merkle tree included the block header along with another MMR proof that the block is in the MMR rooted at M_n.
+**Verifying transaction inclusion in the block**: To ensure that tx is included in some block in the honest chain, the client proceeds similar to a regular SPV client, i.e., verifies the Merkle proof provided by the prover against the root of the transaction Merkle tree included the block header along with another MMR proof that the block is in the MMR rooted at M_n.
 
 
 Rationale
@@ -65,11 +71,10 @@ Security and privacy considerations
 ===================================
 This protocol is probabilistic, meaning there is a negligible probability that an invalid chain can be verified. Assumes adversary mining power is bounded by a known fraction of combined mining power of honest nodes, and cannot drop or tamper with messages between client and full nodes. Assume client is connected to at least one full node and knows the genesis block.
 
-applicable, security and privacy considerations should be explicitly described, particularly if the ZIP makes explicit trade-offs or assumptions. For guidance on this section consider RFC 3552. as a starting point.
 
 Reference implementation
 ========================
-The authors of FlyClient
+[is there a FlyClient repository?]
 
 References
 ==========
