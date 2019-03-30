@@ -79,7 +79,7 @@ Verifier
 
 **Verifying a block in the valid chain**: For a single block B_k in a chain committed to by a block B_n, the prover provides the corresponding block header and an MMR proof that B_k is located at the correct height of the chain committed by B_n. The verifier checks that the MMR root stored in each sampled block correctly commits to the correct subchain of the chain committed to in B_n. 
 
-**Verifying transaction inclusion in the block**: To ensure that tx is included in some block in the honest chain, the client proceeds similar to a regular SPV client, i.e., verifies the Merkle proof provided by the prover against the root of the transaction Merkle tree included the block header along with another MMR proof that the block is in the MMR rooted at M_n.
+**Verifying transaction inclusion in the block**: To ensure that tx is included in the block, we can follow the existing ZCash light client reference specification [#ZIPXXX]_.
 
 
 Rationale
