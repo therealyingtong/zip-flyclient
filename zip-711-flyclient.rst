@@ -97,12 +97,12 @@ A Proof-of-Concept Python implementation has been tested by the FlyClient author
 
 References
 ==========
-.. [#RFC2119] `Key words for use in RFCs to Indicate Requirement Levels <https://tools.ietf.org/html/rfc2119>`_
+.. [#RFC2119] `Key words for use in RFCs to Indicate Requirement Levels <https://tools.ietf.org/html/rfc2119>`
 
-.. [#FlyClient] `FlyClient protocol (2019) <https://eprint.iacr.org/2019/226.pdf>`_
+.. [#FlyClient] `FlyClient protocol (2019) <https://eprint.iacr.org/2019/226.pdf>`
 
-.. [#ZIPXXX] `ZCash reference light client protocol <https://github.com/gtank/zips/blob/light_payment_detection/zip-XXX-light-payment-detection.rst>`_
+.. [#ZIPXXX] `ZCash reference light client protocol <https://github.com/gtank/zips/blob/light_payment_detection/zip-XXX-light-payment-detection.rst>`
 
-.. [#PeterTodd] _`Merkle Mountain Range <https://github.com/proofchains/python-proofmarshal/blob/master/proofmarshal/mmr.py>`_
+.. [#PeterTodd] _`Merkle Mountain Range <https://github.com/proofchains/python-proofmarshal/blob/master/proofmarshal/mmr.py>`
 
-.. [#difficulty] `ZCash historical block difficulty <https://www.coinwarz.com/difficulty-charts/zcash-difficulty-chart>`_
+.. [#difficulty] `ZCash historical block difficulty <https://www.coinwarz.com/difficulty-charts/zcash-difficulty-chart>`
