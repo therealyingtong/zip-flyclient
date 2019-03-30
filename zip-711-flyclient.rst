@@ -1,17 +1,16 @@
 ::
 
-  ZIP: 711 (?)
+  ZIP: 711 
   Title: FlyClient ZCash SPV
   Champions: Zooko <zooko@z.cash> (?)
   Status: Draft
-  Category: Standards Track (?)
+  Category: Consensus
   Created: 2019-03-30
   License: MIT (?)
 
 
 Terminology
 ===========
-The key words "MUST", "SHOULD", and "MAY" in this document are to be interpreted as described in RFC 2119. [#RFC2119]_
 
 Light client
   A client that is not a full participant in the network of Zcash peers. It can send and receive payments, but does not store or validate a copy of the blockchain.
@@ -22,13 +21,16 @@ High probability
 Negligible probability
   An event occurs with negligible probability if it occurs with probability O(1/2^λ), where λ is the security parameter.
 
-Velvet fork
-  A backwards compatible protocol upgrade in which blocks by outdated nodes are not rejected. These rely on clients reinterpreting blockchain data.
- 
+Merkle Mountain Range (MMR)
+  A Merkle mountain range (MMR) is binary hash tree that allows for efficient appends of new leaves without changing the value of existing nodes [#PeterTodd]_.
+
+Hard fork 
+  A hard fork is a change to a protocol that makes transactions from older clients invalid. 
+  
 
 Abstract
 ========
-A proposed implementation of the probabilistic verification FlyClient protocol [#FlyClient]_ on top of the existing ZCash reference light client protocol [#ZIPXXX]_.
+A proposed implementation of the probabilistic verification FlyClient protocol [#FlyClient]_ on top of the existing ZCash reference light client protocol [#ZIPXXX]_. This can be implemented with a hard fork to include a MMR proof in each block header.
 
 Motivation
 ==========
@@ -40,20 +42,21 @@ Specification
 
 Probabilistic sampling
 ```````````````````````
-Instead of downloading every block header, the light client samples blocks from the full node with the given sampling distribution, where x is the relative aggregate weight and δ is the relative weight of the blocks which are queried with probability 1.
+Instead of downloading every block header, the FlyClient samples blocks from the full node with the given sampling distribution, where x is the relative aggregate weight and δ is the fraction of the blocks which are always checked by the client with probability 1.
 
 .. figure:: pdf.png
     :align: center
     :figclass: align-center
 
+The optimal value of δ has been found to be c^k, where c is the adversary's mining power as a fraction of the honest mining power, and k is log_c(δ).
+
 
 New block header
 `````````````````
-Each FlyClient prover has to maintain a commitment to all its block headers in a Merkle mountain range (MMR). This means that each ZCash block header must include the MMR root of all the blocks before it. This can be implemented in a Velvet fork of the ZCash protocol.
+Each FlyClient prover has to maintain a commitment to all its block headers in a Merkle mountain range (MMR). This means that each ZCash block header must include the MMR root of all the blocks before it. This can be implemented in a hard fork of the ZCash protocol, in which the MMR root is added to the header of all old and new blocks. 
 
 Merkle mountain range
 ``````````````````````
-A Merkle mountain range (MMR) is binary hash tree that allows for efficient appends of new leaves without changing the value of existing nodes [#PeterTodd]_.
 
 .. figure:: MMR.png
     :align: center
@@ -61,7 +64,7 @@ A Merkle mountain range (MMR) is binary hash tree that allows for efficient appe
 
     Schematic of Merkle mountain range (from [#FlyClient]_).
     
-This structure also allows for subchain proofs. Consider a client who has already received a verified a proof for a chain of n blocks. When it later receives k new blocks, it need only verify that the new section of length k is honest, as well as that the old chain is a prefix of the new chain.
+The MMR structure allows for subchain proofs. Consider a client who has already received a verified a proof for a chain of n blocks. When it later receives k new blocks, it need only verify that the new section of length k is honest, as well as that the old chain is a prefix of the new chain.
 
 .. figure:: MMRWeight.png
     :align: center
