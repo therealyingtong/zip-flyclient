@@ -21,7 +21,7 @@ High probability
 Negligible probability
   An event occurs with negligible probability if it occurs with probability O(1/2^λ), where λ is the security parameter.
 
-Merkle Mountain Range (MMR)
+Merkle mountain range (MMR)
   A Merkle mountain range (MMR) is binary hash tree that allows for efficient appends of new leaves without changing the value of existing nodes [#PeterTodd]_.
 
 Hard fork 
@@ -47,8 +47,8 @@ Instead of downloading every block header, the FlyClient samples blocks from the
 .. figure:: pdf.png
     :align: center
     :figclass: align-center
-
-The optimal value of δ has been found to be c^k, where c is the adversary's mining power as a fraction of the honest mining power, and k is log_c(δ).
+    
+It has been found that as long as log_c(δ) is constant, where c is the adversary's mining power as a fraction of the honest mining power, then the number of light client queries needed are logarithmic in the size of the blockchain [#FlyClient]_.
 
 
 New block header
