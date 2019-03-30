@@ -40,7 +40,7 @@ Specification
 
 Probabilistic sampling
 ```````````````````````
-Instead of downloading every block header, the light client samples blocks from the full node with the given probability distribution, where x is the relative aggregate weight and δ is the relative weight of the blocks which are queried with probability 1.
+Instead of downloading every block header, the light client samples blocks from the full node with the given sampling distribution, where x is the relative aggregate weight and δ is the relative weight of the blocks which are queried with probability 1.
 
 .. figure:: pdf.png
     :align: center
