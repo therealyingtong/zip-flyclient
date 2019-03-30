@@ -46,6 +46,7 @@ Instead of downloading every block header, the FlyClient samples blocks from the
 
 .. figure:: pdf.png
     :align: center
+    :scale: 50 %
     :figclass: align-center
     
 It has been found that as long as log_c(δ) is constant, where c is the adversary's mining power as a fraction of the honest mining power, then the number of light client queries needed are logarithmic in the size of the blockchain [#FlyClient]_.
