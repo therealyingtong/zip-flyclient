@@ -36,6 +36,8 @@ Motivation
 ==========
 FlyClient reduces the number of block headers needed for light client verification of a valid chain, from linear (as in the current reference protocol) to logarithmic in blockchain length. This verification is correct with high probability. It also allows creation of subchain proofs, so light clients need only check blocks later than the most recently verified block index. Following that, verification of a transaction inclusion within that block follows the usual reference protocol [#ZIPXXX]_. 
 
+A smaller proof size could facilitate ‘side-chaining’ with other blockchains such as Ethereum. It also reduces bandwidth and storage requirements for limited clients like mobile or IoT devices.
+
 
 Specification
 =============
