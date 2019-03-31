@@ -1,6 +1,6 @@
 ::
 
-  ZIP: 711 
+  ZIP: 0311 
   Title: FlyClient ZCash SPV
   Champions: 
   Status: Draft
